@@ -1,7 +1,7 @@
 import os
 import shutil
 
-class FileOps:
+class PyShell:
     @staticmethod
     def cd(path):
         try:
@@ -40,3 +40,10 @@ class FileOps:
                 if os.path.exists(full_path) and os.access(full_path, os.X_OK):
                     return full_path
         return None
+
+    @staticmethod
+    def clear():
+        if os.name == 'nt':
+            _ = os.system('cls')
+        else:
+            _ = os.system('clear')
