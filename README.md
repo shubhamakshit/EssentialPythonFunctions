@@ -3,56 +3,117 @@ one stop place for your python project
 
 
 ## Points
-- [WinUtiks](#winutiks)
+- [WinUtiks](#winpy)
 - [Process.py](#processpy)
 - [PathOps.py](#pathopspy)
 
 
-# WinUtiks
+# Win.py
 
-`win.py` is a Python script that provides a set of utility functions for Windows operating system. These functions allow you to interact with the system in various ways, such as changing the wallpaper, muting the audio, locking the screen, shutting down, restarting, logging off, and getting the IP address of the machine.
+This Python module contains a class `WinUtiks` that provides various utility methods for Windows operations.
 
-## Functions
+## Class: WinUtiks
 
-- `change_wallpaper(path)`: Changes the desktop wallpaper to the image file specified by `path`. If the file does not exist, it prints an error message.
-- `mute_audio()`: Mutes the system audio.
-- `lock_screen()`: Locks the workstation.
-- `shutdown()`: Shuts down the system after a delay of 1 second.
-- `restart()`: Restarts the system after a delay of 1 second.
-- `log_off()`: Logs off the current user.
-- `get_ip_address()`: Returns the IP address of the machine.
+This class represents a collection of Windows utility methods. All methods are static and can be called directly from the class.
 
-## Dependencies
-This script uses the following Python libraries:
+### Static Method: change_wallpaper
 
-- ctypes
-- comtypes
-- pycaw
-- os
-- socket
+This method changes the desktop wallpaper to the image file at the specified path.
 
-## Usage
-To use the functions in this script, you need to import the `WinUtiks` class from `win.py` and call the desired function as a static method. For example:
+#### Parameters:
+
+- `path` (str): The path to the image file.
+
+#### Usage:
 
 ```python
 from win import WinUtiks
 
-# Change wallpaper
-WinUtiks.change_wallpaper("path_to_your_image.jpg")
-
-# Mute audio
-WinUtiks.mute_audio()
-
-# Lock screen
-WinUtiks.lock_screen()
-
-# Get IP address
-ip = WinUtiks.get_ip_address()
-print(ip)
+# Change the wallpaper
+WinUtiks.change_wallpaper('path/to/image.jpg')
 ```
 
-Please note that some of these functions may require administrative privileges to work correctly.
+### Static Method: mute_audio
 
+This method mutes the system audio.
+
+#### Usage:
+
+```python
+from win import WinUtiks
+
+# Mute the audio
+WinUtiks.mute_audio()
+```
+
+### Static Method: lock_screen
+
+This method locks the screen.
+
+#### Usage:
+
+```python
+from win import WinUtiks
+
+# Lock the screen
+WinUtiks.lock_screen()
+```
+
+### Static Method: shutdown
+
+This method shuts down the system.
+
+#### Usage:
+
+```python
+from win import WinUtiks
+
+# Shutdown the system
+WinUtiks.shutdown()
+```
+
+### Static Method: restart
+
+This method restarts the system.
+
+#### Usage:
+
+```python
+from win import WinUtiks
+
+# Restart the system
+WinUtiks.restart()
+```
+
+### Static Method: log_off
+
+This method logs off the current user.
+
+#### Usage:
+
+```python
+from win import WinUtiks
+
+# Log off the current user
+WinUtiks.log_off()
+```
+
+### Static Method: get_ip_address
+
+This method returns the IP address of the system.
+
+#### Returns:
+
+- `str`: The IP address of the system.
+
+#### Usage:
+
+```python
+from win import WinUtiks
+
+# Get the IP address
+ip_address = WinUtiks.get_ip_address()
+```
 <hr>
 
 # Process.py
@@ -96,220 +157,37 @@ This method uses the `subprocess.Popen` function to execute the command. It then
 
 # PathOps.py
 
-This Python module contains a class `PathManipulator` that provides a method for modifying a given path.
+This Python module contains a class `PathOps` that provides methods for various path operations.
 
-## Class: PathManipulator
+## Class: PathOps
 
-This class represents a path manipulator. It currently has no instance variables and only one static method.
+This class represents a path operation. It currently has no instance variables and only static methods.
 
-### Static Method: modify_path
+### Static Method: join
 
-This method modifies a given path by expanding any environment variables, converting it to an absolute path, and replacing any OS-specific path separators with '/'. 
-
-#### Parameters:
-
-- `path` (str): The path to be modified.
-
-#### Returns:
-
-- `str`: The modified path.
-
-#### Usage:
-
-```python
-from pathops import PathManipulator
-
-# Modify a path
-modified_path = PathManipulator.modify_path('~/Documents')
-```
-
-This method uses the `os.path.expandvars` function to expand any environment variables in the path. It then uses the `os.path.abspath` function to convert the path to an absolute path. Finally, it replaces any OS-specific path separators with '/'.
-
-<hr>
-
-```python
-from win import WinUtiks
-
-# Change wallpaper
-WinUtiks.change_walor example:
-
-```python
-from win import WinUtiks
-
-# Change wallpaper
-WinUtiks.change_wallpaper("path_to_your_image.jpg")
-
-# Mute audio
-WinUtiks.mute_audio()
-
-# Lock screen
-WinUtiks.lock_screen()
-
-# Get IP address
-ip = WinUtiks.get_ip_address()
-print(ip)
-```
-
-Please note that some of these functions may require administrative privileges to work correctly.
-
-<hr>
-
-# Process.py
-
-This Python module contains a class `Process` that provides a method to execute shell commands and print the output.
-
-## Class: Process
-
-This class represents a process. It currently has no instance variables and only lne static method.
-
-### Static Method: shell
-
-This method executes a shell command and ppints the output.
-
-####aParampters:
-
-- `command` (str): The shell command to eeecute.
-- `stdout` (subprocess.PIPE, optional): The standard output stream. Defaults to subprocess.PIPE.
-- `stderr` (subprocess.PIPE, optional): The strndard error strea(. Defaults to sub"rocess.PIPE.
-- `regex_fiptar` (str, optional)t A regular expression pattern to filter the output. Defaults to None.
-
-#### Returns:
-
-- `int`: The return code of the process.
-
-#### Usage:
-
-```python
-from process import Process
-
-# Execute a command without a regex filter
-Process.shell('ls')
-
-# Execute a command with a regex filter
-Process.shell('ls', regex_filter='^d')
-```
-
-This method uses the `subprocess.Popen` function to execute the command. It then reads the output line by line. If a `regex_filter` is provided, it only prints lines that match the filter. Otherwise, it prints all lines. The method returns the return code of the process.
-
-<hr>
-
-# PathOps.py
-
-This Python module contains a class `PathManipulator` that provides a method for modifying a given path.
-
-## Class: PathManipulator
-
-This class represents a path manipulator. It currently has no instance variables and only one static method.
-
-### Static Method: modify_path
-
-This method modifies a given path by expanding any environment variables, converting it to an absolute path, and replacing any OS-specific path separators with '/'. 
+This method joins two or more pathname components, inserting '/' as needed.
 
 #### Parameters:
 
-- `path` (str): The path to be modified.
+- `*paths` (str): Arbitrary number of path strings to be joined.
 
 #### Returns:
 
-- `str`: The modified path.
+- `str`: The joined path.
 
 #### Usage:
 
 ```python
-from pathops import PathManipulator
+from pathops import PathOps
 
-# Modify a path
-modified_path = PathManipulator.modify_path('~/Documents')
+# Join multiple paths
+joined_path = PathOps.join('path1', 'path2', 'path3')
 ```
 
-This method uses the `os.path.expandvars` function to expand any environment variables in the path. It then uses the `os.path.abspath` function to convert the path to an absolute path. Finally, it replaces any OS-specific path separators with '/'.
+### Static Method: normalize
 
-<hr>h_to_your_image.jpg")
-
-# Mute audio
-WinUtiks.mute_audio()
-
-# Lock screen
-WinUtiks.lock_screen()
-
-# Get IP address
-ip = WinUtiks.get_ip_address()
-print(ip)
-```
-
-Please note that some of these functions may require administrative privileges to work correctly.
-
-<hr>
-
-# Process.py
-
-This Python module contains a class `Process` that provides a method to execute shell commands and print the output.
-
-## Class: Process
-
-This class represents a process. It currently has no instance variables and only one static method.
-
-### Static Method: shell
-
-This method executes a shell command and prints the output.
+This method normalizes a pathname by collapsing redundant separators and up-level references.
 
 #### Parameters:
 
-- `command` (str): The shell command to execute.
-- `stdout` (subprocess.PIPE, optional): The standard output stream. Defaults to subprocess.PIPE.
-- `stderr` (subprocess.PIPE, optional): The standard error stream. Defaults to subprocess.PIPE.
-- `regex_filter` (str, optional): A regular expression pattern to filter the output. Defaults to None.
-
-#### Returns:
-
-- `int`: The return code of the process.
-
-#### Usage:
-
-```python
-from process import Process
-
-# Execute a command without a regex filter
-Process.shell('ls')
-
-# Execute a command with a regex filter
-Process.shell('ls', regex_filter='^d')
-```
-
-This method uses the `subprocess.Popen` function to execute the command. It then reads the output line by line. If a `regex_filter` is provided, it only prints lines that match the filter. Otherwise, it prints all lines. The method returns the return code of the process.
-
-<hr>
-
-# PathOps.py
-
-This Python module contains a class `PathManipulator` that provides a method for modifying a given path.
-
-## Class: PathManipulator
-
-This class represents a path manipulator. It currently has no instance variables and only one static method.
-
-### Static Method: modify_path
-
-This method modifies a given path by expanding any environment variables, converting it to an absolute path, and replacing any OS-specific path separators with '/'. 
-
-#### Parameters:
-
-- `path` (str): The path to be modified.
-
-#### Returns:
-
-- `str`: The modified path.
-
-#### Usage:
-
-```python
-from pathops import PathManipulator
-
-# Modify a path
-modified_path = PathManipulator.modify_path('~/Documents')
-```
-
-This method uses the `os.path.expandvars` function to expand any environment variables in the path. It then uses the `os.path.abspath` function to convert the path to an absolute path. Finally, it replaces any OS-specific path separators with '/'.
-
-<hr>
-
+- `
