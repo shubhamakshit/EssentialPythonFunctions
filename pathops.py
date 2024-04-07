@@ -7,3 +7,4 @@ class PathManipulator:
         absolute_path = os.path.abspath(expanded_path)
         modified_path = absolute_path.replace(os.sep, '/')
         return modified_path
+    
