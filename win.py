@@ -47,11 +47,3 @@ class WinUtiks:
         return ip_address
 
 
-
-
-
-
-
-# usage
-# WinUtiks.change_wallpaper("C:\\path\\to\\your\\image.jpg")
-# WinUtiks.mute_audio()
