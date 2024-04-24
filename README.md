@@ -191,3 +191,42 @@ This method normalizes a pathname by collapsing redundant separators and up-leve
 #### Parameters:
 
 - `
+
+# net.py
+
+## Overview
+
+The `net.py` script contains a class `NetUtils` that provides two static methods for network-related operations. 
+
+## Methods
+
+### `get_local_ip()`
+
+This method retrieves the local IP address of the host machine. It does this by creating a socket, connecting to an external IP address (8.8.8.8), and then retrieving the local IP address that was used for that connection.
+
+### `server(ipv4_address, SERVER_PORT, FOLDER_MAIN="./")`
+
+This method starts a simple HTTP server at the specified IP address and port, serving files from the specified directory. It uses Python's built-in `http.server` module to start the server. The server's state is written to a file named `server.prop.state`.
+
+## Usage
+
+To use these methods, import the `NetUtils` class from `net.py` and call the methods as follows:
+
+```python
+from net import NetUtils
+
+# Get local IP
+local_ip = NetUtils.get_local_ip()
+print(local_ip)
+
+# Start server
+NetUtils.server('192.168.1.1', 8000, '/path/to/serve')
+```
+
+## Dependencies
+
+This script requires Python's built-in `socket` and `subprocess` modules. No additional libraries are needed.
+
+## Notes
+
+This script assumes that the server starts successfully and does not handle any exceptions that might occur during the server start-up process.
