@@ -6,7 +6,7 @@ one stop place for your python project
 - [WinUtiks](#winpy)
 - [Process.py](#processpy)
 - [PathOps.py](#pathopspy)
-- [net.py]{#net.py}
+- [net.py](#net.py)
 
 
 # Win.py
